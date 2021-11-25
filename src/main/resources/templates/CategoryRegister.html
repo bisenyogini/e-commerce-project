@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:replace="fragment/commonUser :: header"></div>
+<body>
+<div th:replace="fragment/commonUser :: menu"></div>
+<div class="container">
+  <div class="card">
+   <div class="card-header bg-primary text-white text-center"><h3>Category Register</h3></div>
+      <div class="card-body"></div>
+      <form th:action="@{/category/save}" method="post">
+          <div class="row">
+              <div class="col-2"><label for="catName">Name</label></div>
+              <div class="col-4"><input type="text" name="catName" id="catName" class="form-control"/></div>
+              <div class="col-6"><span id="catNameError"></span></div>
+          </div>
+          <div class="row">
+              <div class="col-2"><label for="categoryType">Category Type</label></div>
+              <div class="col-4"><select name="categoryType.id" id="categoryType">
+                  <option value="">--select--</option>
+                  <option th:each="ob:${categoryTypes}" th:text="${ob.value}" th:value="${ob.key}"></option>
+              </select></div>
+              <div class="col-6"><span id="categoryTypeError"></span></div>
+          </div>
+          <div class="row">
+              <div class="col-2"><label for="alias">Alias</label></div>
+              <div class="col-4"><input type="text" name="alias" id="alias" class="form-control"/></div>
+              <div class="col-6"><span id="catAliasError"></span></div>
+          </div>
+
+          <div class="row">
+              <div class="col-2"><label for="status">Gender<span style="color: red">*</span></label></div>
+              <div class="col-6"><input type="radio" name="status" id="s1"  class="form-controller" value="ACTIVE"/>ACTIVE <input type="radio" name="status" id="s2"   class="form-controller" value="INACTIVE" />INACTIVE</div>
+              <div class="col-4"><span id="statusError" class="text-danger"></span></div>
+          </div>
+          <button type="submit" class="bg-success text-white text-center">Register</button>
+      </form>
+      <div class="card-footer">
+          <span th:text="${message}"></span>
+      </div>
+
+
+
+
+  </div>
+
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:replace="fragment/commonUser :: header"></div>
+<body>
+<div th:replace="fragment/commonUser :: menu"></div>
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-primary text-white text-center"><h3>Category Update</h3></div>
+    <div class="card-body"></div>
+    <form th:action="@{/category/update}" method="post" th:object="${category}">
+      <div class="row">
+        <div class="col-3"><label for="catId">Id</label></div>
+        <div class="col-3"><input type="text" th:field="*{catId}" class="form-control" readonly/></div>
+        <div class="col-6"><span id="catIdError"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-3"><label for="catName">Name</label></div>
+        <div class="col-3"><input type="text" th:field="*{catName}" class="form-control"/></div>
+        <div class="col-6"><span id="catNameError"></span></div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <label for="categoryType">Category Type</label>
+
+        </div>
+        <div class="col-4">
+          <select th:field="*{categoryType}" name="categoryType.catTypeId" class="form-control">
+            <option value="">-SELECT-</option>
+            <option th:each="ob:${categoryTypes}" th:value="${ob.key}" th:text="${ob.value}" ></option></select>
+        </div>
+        <div class="col-6"><span id="categoryTypeError"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-3"><label for="alias">Alias</label></div>
+        <div class="col-3"><input type="text" th:field="*{alias}" class="form-control"/></div>
+        <div class="col-6"><span id="catAliasError"></span></div>
+      </div>
+      <div class="row">
+        <div class="col-3"><label for="status">Status</label></div>
+        <div class="col-3"><input type="text" th:field="*{status}" class="form-control"/></div>
+        <div class="col-6"><span id="catStatusError"></span></div>
+      </div>
+      <button type="submit" class="bg-success text-white text-center">Update</button>
+    </form>
+    <div class="card-footer">
+      <span th:text="${message}"></span>
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+</div>
+</body>
+</html>

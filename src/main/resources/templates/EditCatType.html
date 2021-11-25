@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<div th:replace="fragment/commonUser :: header"></div>
+<body>
+<div th:replace="fragment/commonUser :: menu"></div>
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center"><h3>Category Type Update</h3></div>
+        <div class="card-body"></div>
+        <form th:action="@{/catType/update}" method="post" th:object="${catType}">
+            <div class="row">
+                <div class="col-3"><label for="catTypeId">Id</label></div>
+                <div class="col-3"><input type="text" th:field="*{catTypeId}" class="form-control" readonly/></div>
+                <div class="col-6"><span id="catTypeIdError"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-3"><label for="catType">Category Type</label></div>
+                <div class="col-3"><input type="text" th:field="*{catType}" class="form-control"/></div>
+                <div class="col-6"><span id="catTypeError"></span></div>
+            </div>
+            <button type="submit" class="bg-success text-white text-center">Update</button>
+        </form>
+        <div class="card-footer">
+            <span th:text="${message}"></span>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+</div>
+</body>
+</html>
